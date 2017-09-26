@@ -1,0 +1,35 @@
+<h1><%= @survey.title() %></h1>
+
+<p><a href="/<%= @survey.id() %>/edit">Edit Title</a></p>
+
+
+<% if @survey.questions().any?() %>
+  <h3>Here are all the questions in this Survey</h3>
+
+  <ul>
+    <% @survey.questions().each() do |item| %>
+      <li><a href='/<%=@survey.id %>/<%=item.id %>'><%= item.query %> </a></li>
+    <% end %>
+  </ul>
+
+  <% else %>
+    <p>There are no questions on this survey!</p>
+<% end %>
+
+<h3>Add a question to this <%= @survey.title() %> </h3>
+
+<form action="/:id" method="post">
+  <input id="survey_id" name="survey_id" type="hidden" value="<%= @survey.id() %>">
+
+  <label for="query">Name of this question:</label>
+  <input id="query" name="query" type="text">
+
+  <button type="submit">Add Questions</button>
+</form>
+
+<hr>
+
+<div class="container">
+  <a href="/">Home</a>
+  <a href="/surveys">View All Surveys</a>
+</div>
