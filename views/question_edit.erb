@@ -2,7 +2,7 @@
 
 <h1>Update <%=@question.query %> </h1>
 
-<form action="/<%= @question.id() %>" method="post">
+<form action="/<%= @survey.id() %>/<%= @question.id() %>" method="post">
   <input name="_method" type="hidden" value="patch">
   <label for="query">Update Question:</label>
   <input id="query" name="query" type="text">

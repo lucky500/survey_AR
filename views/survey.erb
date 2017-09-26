@@ -1,6 +1,6 @@
 <h1><%= @survey.title() %></h1>
 
-<p><a href="/<%= @survey.id() %>/edit">Edit Title</a></p>
+<p><a href="/<%= @survey.id() %>/edit">Edit Survey</a></p>
 
 
 <% if @survey.questions().any?() %>
@@ -20,7 +20,6 @@
 
 <form action="/:id" method="post">
   <input id="survey_id" name="survey_id" type="hidden" value="<%= @survey.id() %>">
-
   <label for="query">Name of this question:</label>
   <input id="query" name="query" type="text">
 

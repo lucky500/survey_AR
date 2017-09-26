@@ -38,6 +38,13 @@ get("/:id/edit") do
   erb(:survey_edit)
 end
 
+delete("/surveys/:id") do
+  @survey = Survey.find(params.fetch("id").to_i())
+  @survey.delete()
+  @surveys = Survey.all()
+  erb(:index)
+end
+
 patch("/:id") do
   title = params.fetch("title")
   @survey = Survey.find(params.fetch("id").to_i())
@@ -51,9 +58,16 @@ get("/:id/:id1") do
   erb :question
 end
 
-patch("/:id") do
-  question = params.fetch("query")
-  @question = Question.find(params.fetch("id").to_i())
+get("/:id/:id1/edit") do
+  @survey = Survey.find(params.fetch("id").to_i())
+  @question = Question.find(params.fetch("id1").to_i())
+  erb :question_edit
+end
+
+patch("/:id/:id1") do
+  @survey = Survey.find(params.fetch("id").to_i())
+  query = params.fetch("query")
+  @question = Question.find(params.fetch("id1").to_i())
   @question.update({:query => query})
   erb(:question)
 end

@@ -1,3 +1,11 @@
 <h1><%= @question.query %></h1>
 
 <p><a href="/<%= @survey.id() %>/<%= @question.id %>/edit">Edit Question</a></p>
+
+<form action="/<%= @question.id() %>" method="post">
+  <input name="_method" type="hidden" value="delete">
+
+  <button type="submit">Delete Question</button>
+</form>
+
+<a href='/<%= @survey.id() %>' type="button">Go to all questions</a>
